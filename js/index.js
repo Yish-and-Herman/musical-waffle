@@ -7,11 +7,11 @@ const movieSelection = document.getElementById("movies");
 
 //function to pull movies from database
 
-function selectMovie(){
+function selectMovie() {
     const movieSelector = document.querySelector("form");
-    fetch('https://rain-wealthy-teacher.glitch.me/movies').then( response => {
-        response.json().then( response => {
-            appendMovie(response);
+    fetch('https://rain-wealthy-teacher.glitch.me/movies').then(response => {
+        response.json().then(response => {
+            addNewMovie(response);
         });
 
         movieSelector.addEventListener("submit", event =>
@@ -44,10 +44,21 @@ $("#submit-movie").click(function () {
     fetch('https://rain-wealthy-teacher.glitch.me/movies')
         .then(response => response.json())
         .then(response => {
-          appendMovie(response);
+            addNewMovie(response);
         })
 });
 
 // This is meant to add the movies to the html
 
+function addNewMovie(movie) {
+    const newMovie = "";
+    for (let i = 0; i < movie.length; i++) {
+        movie += `<li> You have entered: ${movie[i].title} 
+                  <span>You gave it a rating of: ${movie[i].rating}</span>
+    </li>`
+    }
+    movieSelection.innerHTML = newMovie
+}
 
+
+console.log(addNewMovie);
