@@ -23,8 +23,18 @@ function getAllMovies(){
     AJAX(url).then(responseData => {
         console.log(responseData)
         responseData.forEach(function (movie){
-            let html = "";
-            html = ``
+            // let html = "";
+            $('#movies').append(
+            // html +=
+                `<div class="card" style="width: 18rem;">
+  <img src=${movie.poster} class="card-img-top" alt="...">
+  <div class="card-body">
+  
+    <p class="card-text">Movie title: ${movie.title}</p>
+    <p class="card-text">Movie rating: ${movie.rating}</p>
+    <p class="card-text">Synopsis: ${movie.plot}</p>
+  </div>
+</div>`)
         })
     });
 }
@@ -60,6 +70,20 @@ function addMovie() {
     AJAX(url, "POST", movieToAdd).then(responseData => console.log(responseData));
 
 }
+
+
+
+//div w/ id movies
+//create html
+//include bootstrap in html
+//find card
+//grab card and slap it inside ``
+//place content inside card ${}
+//target div with id movies using DOM
+//append var html with ``
+
+
+
 // addMovie();
 //function to pull movies from database
 
@@ -105,17 +129,3 @@ function addMovie() {
 // });
 
 // This is meant to add the movies to the html
-
-
-// container in html
-//div w/ id movies
-//create html
-//include bootstrap in html
-//find card
-//grab card and slap it inside ``
-//place content inside card ${}
-//target div with id movies using DOM
-//append var html with ``
-
-
-
