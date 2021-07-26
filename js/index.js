@@ -13,6 +13,10 @@ function selectMovie(){
         response.json().then( response => {
             appendMovie(response);
         });
+
+        movieSelector.addEventListener("submit", event =>
+            event.preventDefault()
+        )
     });
 }
 
