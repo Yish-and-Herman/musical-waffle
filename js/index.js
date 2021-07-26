@@ -20,5 +20,22 @@ function selectMovie(){
     });
 }
 
+selectMovie()
 
+//function to add user input to the json database
 
+$("#submit-movie").click(function () {
+    const movieTitle = $("#movie-title").val();
+    const rating = $("#rating").val();
+    const movieSubmission = {
+        title: movieTitle,
+        rating: rating
+    }
+    const selection = {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify(movieSubmission),
+    }
+})
