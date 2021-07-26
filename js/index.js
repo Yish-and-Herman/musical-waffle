@@ -20,7 +20,13 @@ function AJAX(url, method = "GET", data) {
 }
 
 function getAllMovies(){
-    AJAX(url).then(responseData => console.log(responseData));
+    AJAX(url).then(responseData => {
+        console.log(responseData)
+        responseData.forEach(function (movie){
+            let html = "";
+            html = ``
+        })
+    });
 }
 
 getAllMovies()
@@ -35,8 +41,26 @@ function deleteMovie(id){
     AJAX(`${url}/${id}`, "DELETE").then(responseData => console.log(responseData));
 }
 
+function updateMovies(id) {
+    AJAX(`${url}/${id}`, "PATCH", {name: "Iron Man 2", rating: 2.5}).then(responseData => console.log(responseData));
+
+}
+
+// updateMovies(30)
+
+function addMovie() {
+    const movieToAdd = {
+        name: "Iron Man",
+        rating: 5,
 
 
+    };
+
+
+    AJAX(url, "POST", movieToAdd).then(responseData => console.log(responseData));
+
+}
+// addMovie();
 //function to pull movies from database
 
 // function selectMovie() {
@@ -83,7 +107,15 @@ function deleteMovie(id){
 // This is meant to add the movies to the html
 
 
-
+// container in html
+//div w/ id movies
+//create html
+//include bootstrap in html
+//find card
+//grab card and slap it inside ``
+//place content inside card ${}
+//target div with id movies using DOM
+//append var html with ``
 
 
 
