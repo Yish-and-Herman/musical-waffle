@@ -38,4 +38,12 @@ $("#submit-movie").click(function () {
         },
         body: JSON.stringify(movieSubmission),
     }
-})
+    fetch('https://rain-wealthy-teacher.glitch.me/movies', selection)
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
+    fetch('https://rain-wealthy-teacher.glitch.me/movies')
+        .then(response => response.json())
+        .then(response => {
+          appendMovie(response);
+        })
+});
