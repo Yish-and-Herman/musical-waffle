@@ -47,3 +47,7 @@ $("#submit-movie").click(function () {
           appendMovie(response);
         })
 });
+
+// This is meant to add the movies to the html
+
+
