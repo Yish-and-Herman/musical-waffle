@@ -50,8 +50,8 @@ function deleteMovie(id) {
     AJAX(`${url}/${id}`, "DELETE").then(responseData => console.log(responseData));
 }
 
-deleteMovie(16)
 
+${'#movie-title', '#movie-rating'}
 
 // function updateMovies(id) {
 //     AJAX(`${url}/${id}`, "PATCH", {name: "Iron Man 2", rating: 2.5}).then(responseData => console.log(responseData));
