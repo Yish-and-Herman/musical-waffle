@@ -34,6 +34,8 @@ function getAllMovies() {
     <p class="card-text">Movie rating: ${movie.rating}</p>
     <p class="card-text">Synopsis: ${movie.plot}</p>
     <button type="submit" class="delete-button" data-id="${movie.id}">Delete Movie</button>
+        <button type="submit" class="edit-button" data-id="${movie.id}">Edit Movie</button>
+
   </div>
 </div>`)
         })
@@ -58,11 +60,18 @@ function addEventListeners() {
         const idToDelete = $(this).attr("data-id")
         console.log(idToDelete);
         AJAX(`${url}/${idToDelete}`, "DELETE").then(responseData => console.log(responseData));
+        getAllMovies()
     });
+    $('.edit-button').click(function () {
+        const idToEdit = $(this).attr("data-id")
+        $('#myModal').modal('show')
+        $('#saveChanges').click(function () {
+        })
+    })
 }
 
 function updateMovies(id) {
-    AJAX(`${url}/${id}`, "PATCH", {name: 'Iron Man', rating: 2.5}).then(responseData => console.log(responseData));
+    AJAX(`${url}/${id}`, "PATCH", {plot: "Yep"}).then(responseData => console.log(responseData));
 
 }
 
@@ -92,5 +101,10 @@ $('#submit-movie').click(function (event) {
 //place content inside card ${}
 //target div with id movies using DOM
 //append var html with ``
+//create user input for modal
 
+
+// when save changes clicked call update movie
+//hide modal inside click event
+//call getallmovies again
 
