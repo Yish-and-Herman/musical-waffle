@@ -24,7 +24,6 @@ $(document).ready(function () {
         AJAX(url).then(responseData => {
             console.log(responseData)
             responseData.forEach(function (movie) {
-                // let html = "";
                 $('#movies').append(
                     // html +=
                     `<div class="card" style="width: 18rem;">
@@ -55,7 +54,6 @@ $(document).ready(function () {
 
 
     function addEventListeners() {
-
         $('.delete-button').click(function () {
             const idToDelete = $(this).attr("data-id")
             console.log(idToDelete);
