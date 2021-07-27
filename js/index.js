@@ -5,10 +5,7 @@
 const url = 'https://rain-wealthy-teacher.glitch.me/movies'
 const movieSelection = document.getElementById("movies");
 
-const movieToAdd = {
-    name: $('#movie-title').val(),
-    rating: $('#rating').val(),
-};
+
 
 
 function AJAX(url, method = "GET", data) {
@@ -66,12 +63,18 @@ function updateMovies(id) {
 
 // updateMovies(30)
 
-function addMovie(movieToAdd) {
+function addMovie() {
+    const movieToAdd = {
+        title: $('#movie-title').val(),
+        rating: $('#rating').val(),
+    };
+    console.log(movieToAdd)
 
     AJAX(url, "POST", movieToAdd).then(responseData => console.log(responseData));
 }
 
-$('#submit-movie').click(function () {
+$('#submit-movie').click(function (event) {
+    event.preventDefault()
     addMovie()
 });
 
