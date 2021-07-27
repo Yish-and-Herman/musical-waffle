@@ -4,3 +4,6 @@ h1{
     justify-content: center;
 }
 
+.spinner-grow {
+    display: flex;
+}

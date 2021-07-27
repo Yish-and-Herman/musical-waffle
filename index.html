@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
 <header><h1> Movie Project</h1></header>
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
 <hr>
 <p> Add or delete movies as you please!</p>
 <form>
@@ -19,7 +26,13 @@
     <label for="rating"></label><input name="rating" id="rating" type="text" placeholder="Movie Rating">
     <button type="submit" id="submit-movie">Add Movie and Rating</button>
 </form>
+<div class="container">
+    <div class="row">
+        <div class="column">
 <div id="movies">
+</div>
+</div>
+</div>
 </div>
 <div class="modal" id="myModal" tabindex="-1">
     <div class="modal-dialog">
@@ -31,7 +44,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <textarea <input name="movie-title" id="edit-plot" type="text" placeholder="Edit here"></textarea>
+                <textarea></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
