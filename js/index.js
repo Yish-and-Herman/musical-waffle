@@ -6,8 +6,6 @@ const url = 'https://rain-wealthy-teacher.glitch.me/movies'
 const movieSelection = document.getElementById("movies");
 
 
-
-
 function AJAX(url, method = "GET", data) {
     const options = {
         method: method,
@@ -35,11 +33,14 @@ function getAllMovies() {
    <p class="card-text">Movie title: ${movie.title}</p>
     <p class="card-text">Movie rating: ${movie.rating}</p>
     <p class="card-text">Synopsis: ${movie.plot}</p>
+    <button type="submit" class="delete-button" data-id="${movie.id}">Delete Movie</button>
   </div>
 </div>`)
         })
+        addEventListeners()
     });
 }
+
 
 getAllMovies()
 
@@ -49,12 +50,16 @@ getAllMovies()
 //
 // getOneMovie(2)
 
-function deleteMovie(id) {
-    AJAX(`${url}/${id}`, "DELETE").then(responseData => console.log(responseData));
+
+
+function addEventListeners() {
+
+    $('.delete-button').click(function () {
+        const idToDelete = $(this).attr("data-id")
+        console.log(idToDelete);
+        AJAX(`${url}/${idToDelete}`, "DELETE").then(responseData => console.log(responseData));
+    });
 }
-
-
-
 
 function updateMovies(id) {
     AJAX(`${url}/${id}`, "PATCH", {name: 'Iron Man', rating: 2.5}).then(responseData => console.log(responseData));
@@ -77,11 +82,6 @@ $('#submit-movie').click(function (event) {
     event.preventDefault()
     addMovie()
 });
-
-
-
-
-
 
 
 //div w/ id movies
