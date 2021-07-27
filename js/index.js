@@ -5,6 +5,12 @@
 const url = 'https://rain-wealthy-teacher.glitch.me/movies'
 const movieSelection = document.getElementById("movies");
 
+const movieToAdd = {
+    name: $('#movie-title').val(),
+    rating: $('#rating').val(),
+};
+
+
 function AJAX(url, method = "GET", data) {
     const options = {
         method: method,
@@ -40,33 +46,39 @@ function getAllMovies() {
 
 getAllMovies()
 
-function getOneMovie(id) {
-    AJAX(`${url}/${id}`).then(responseData => console.log(responseData));
-}
-
-getOneMovie(2)
+// function getOneMovie(id) {
+//     AJAX(`${url}/${id}`).then(responseData => console.log(responseData));
+// }
+//
+// getOneMovie(2)
 
 function deleteMovie(id) {
     AJAX(`${url}/${id}`, "DELETE").then(responseData => console.log(responseData));
 }
 
 
-${'#movie-title', '#movie-rating'}
 
-// function updateMovies(id) {
-//     AJAX(`${url}/${id}`, "PATCH", {name: "Iron Man 2", rating: 2.5}).then(responseData => console.log(responseData));
-//
-// }
+
+function updateMovies(id) {
+    AJAX(`${url}/${id}`, "PATCH", {name: 'Iron Man', rating: 2.5}).then(responseData => console.log(responseData));
+
+}
 
 // updateMovies(30)
 
-// function addMovie() {
-//     const movieToAdd = {
-//         name: "Iron Man",
-//         rating: 5,
-//     };
-//     AJAX(url, "POST", movieToAdd).then(responseData => console.log(responseData));
-// }
+function addMovie(movieToAdd) {
+
+    AJAX(url, "POST", movieToAdd).then(responseData => console.log(responseData));
+}
+
+$('#submit-movie').click(function () {
+    addMovie()
+});
+
+
+
+
+
 
 
 //div w/ id movies
