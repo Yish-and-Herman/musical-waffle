@@ -57,6 +57,7 @@ function addEventListeners() {
         const idToDelete = $(this).attr("data-id")
         console.log(idToDelete);
         AJAX(`${url}/${idToDelete}`, "DELETE").then(responseData => console.log(responseData));
+
     });
 
     $('.edit-button').click(function () {
@@ -65,8 +66,9 @@ function addEventListeners() {
         $('#saveChanges').click(function () {
             AJAX(`${url}/${idToEdit}`, "PATCH", {plot: $('#edit-box').val()}).then(responseData => console.log(responseData));
             $('#myModal').modal('hide')
+            $('#movies').html("")
+            getAllMovies()
         })
-
     });
 }
 
