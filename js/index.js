@@ -24,7 +24,6 @@ function getAllMovies() {
     AJAX(url).then(responseData => {
         console.log(responseData)
         responseData.forEach(function (movie) {
-            // let html = "";
             $('#movies').append(
                 // html +=
                 `<div class="card" style="width: 18rem;">
@@ -53,21 +52,22 @@ getAllMovies()
 // getOneMovie(2)
 
 
-
 function addEventListeners() {
-
     $('.delete-button').click(function () {
         const idToDelete = $(this).attr("data-id")
         console.log(idToDelete);
         AJAX(`${url}/${idToDelete}`, "DELETE").then(responseData => console.log(responseData));
-        getAllMovies()
     });
+
     $('.edit-button').click(function () {
         const idToEdit = $(this).attr("data-id")
         $('#myModal').modal('show')
         $('#saveChanges').click(function () {
+            AJAX(`${url}/${idToEdit}`, "PATCH", {plot: $('#edit-box').val()}).then(responseData => console.log(responseData));
+            $('#myModal').modal('hide')
         })
-    })
+
+    });
 }
 
 function updateMovies(id) {
@@ -75,7 +75,6 @@ function updateMovies(id) {
 
 }
 
-// updateMovies(30)
 
 function addMovie() {
     const movieToAdd = {
