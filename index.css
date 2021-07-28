@@ -14,3 +14,7 @@ body {
     background-image: url("img/finally.jpg");
     font-family: "Al Nile";
 }
+
+.card-body{
+    background-color: beige;
+}
