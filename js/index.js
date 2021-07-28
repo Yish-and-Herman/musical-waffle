@@ -22,6 +22,7 @@ $(document).ready(function () {
 
     function getAllMovies() {
         AJAX(url).then(responseData => {
+            $('#movies').html("")
             console.log(responseData)
             responseData.forEach(function (movie) {
                 $('#movies').append(
@@ -41,7 +42,7 @@ $(document).ready(function () {
             addEventListeners()
         });
 
-            $('.spinner-border').hide();
+        $('.spinner-border').hide();
     }
 
     getAllMovies()
@@ -63,13 +64,17 @@ $(document).ready(function () {
         $('.edit-button').click(function () {
             const idToEdit = $(this).attr("data-id")
             $('#myModal').modal('show')
-            $('#saveChanges').click(function () {
+            $('#saveChanges').click(function (event) {
+                event.preventDefault()
+                updateMovies(idToEdit)
+                $('#myModal').modal('hide')
+                getAllMovies()
             })
-        })
+        });
     }
 
     function updateMovies(id) {
-        AJAX(`${url}/${id}`, "PATCH", {plot: "Yep"}).then(responseData => console.log(responseData));
+        AJAX(`${url}/${id}`, "PATCH", {plot: $('#edit-box').val()}).then(responseData => console.log(responseData));
 
     }
 
