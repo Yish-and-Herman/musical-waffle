@@ -7,3 +7,10 @@ h1{
 .spinner-grow {
     display: flex;
 }
+
+body {
+    background-color: rgb(153,102,153);
+    color: indianred;
+    background-image: url("img/finally.jpg");
+    font-family: "Al Nile";
+}
