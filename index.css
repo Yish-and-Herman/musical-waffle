@@ -2,6 +2,7 @@
 h1{
     display: flex;
     justify-content: center;
+    font-size: 100px;
 }
 
 .spinner-grow {
@@ -15,6 +16,7 @@ body {
     font-family: "Al Nile";
 }
 
-.card-body{
+.card{
     background-color: beige;
+    margin: 15px;
 }

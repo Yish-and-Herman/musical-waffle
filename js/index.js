@@ -71,10 +71,18 @@ $(document).ready(function () {
                 getAllMovies()
             })
         });
+        // $('.edit-button').click(function () {
+        //     const idToEdit = $(this).attr("data-id")
+        //     $('#myModal').modal('show')
+        //     $('#saveChanges').click(function (event) {
+        //         event.preventDefault()
+        //         updateMovies(idToEdit)
+        //         $('#myModal').modal('hide')
+        //         getAllMovies()
     }
 
     function updateMovies(id) {
-        AJAX(`${url}/${id}`, "PATCH", {plot: $('#edit-box').val()}).then(responseData => console.log(responseData));
+        AJAX(`${url}/${id}`, "PATCH", {plot: $('#edit-box').val(), title: $('#edit-title').val(), rating: $('#edit-rating').val() }).then(responseData => console.log(responseData));
 
     }
 
