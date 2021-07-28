@@ -26,7 +26,7 @@ $(document).ready(function () {
             responseData.forEach(function (movie) {
                 $('#movies').append(
                     // html +=
-                    `<div class="card" style="width: 18rem;">
+                    `<div class= "col card" style="width: 18rem;">
   <img src=${movie.poster} class="card-img-top" alt="...">
   <div class="card-body">
    <p class="card-text">Movie title: ${movie.title}</p>
