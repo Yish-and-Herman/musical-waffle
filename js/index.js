@@ -1,6 +1,40 @@
 "use strict";
 $(document).ready(function () {
 
+    const getMoviesFromOMdb_API = (movieToAdd) => {
+        const OMdb_API = `http://www.omdbapi.com/?i=tt3896198&apikey=91205e9a=${movieAPI}&t=${movieToAdd.title}`;
+        fetch(OMdb_API).then(response => {
+            response.json().then(moviesFromOMDB => {
+                // Object Properties for moviesFromOMDB: Title, Year, Genre, Director, Actors, Plot, Poster
+                //HOW THIS WORKS: users only need to enter the movie title and OMDB will populate the rest if left empty
+                //If a movie is a remake ex: Scarface 1932 vs Scarface 1983, user will need to enter the year
+
+                movieToAdd.poster = moviesFromOMDB.Poster //movie poster will auto-populate from OMDB, no user input needed
+
+                //If statements for fields left blank
+
+                if (movieToAdd.plot === ""){
+                    movieToAdd.plot = moviesFromOMDB.Plot
+                }
+                if( movieToAdd.actors === ""){
+                    movieToAdd.actors = moviesFromOMDB.Actors
+                }
+                if (movieToAdd.director === ""){
+                    movieToAdd.director = moviesFromOMDB.Director
+                }
+                if (movieToAdd.genre === ""){
+                    movieToAdd.genre = moviesFromOMDB.Genre
+                }
+                if (movieToAdd.year === ""){
+                    movieToAdd.year = moviesFromOMDB.Year
+                }
+
+                addMovie(movieToAdd);
+
+            });
+        })
+    }
+
 //movies list in a variable
     const url = 'https://rain-wealthy-teacher.glitch.me/movies'
     const movieSelection = document.getElementById("movies");
