@@ -1,17 +1,14 @@
 "use strict";
 $(document).ready(function () {
 
+//movies list in a variable
+    const url = 'https://rain-wealthy-teacher.glitch.me/movies'
+    const movieSelection = document.getElementById("movies");
+
     const getMoviesFromOMdb_API = (movieToAdd) => {
         const OMdb_API = `http://www.omdbapi.com/?i=tt3896198&apikey=91205e9a=${movieAPI}&t=${movieToAdd.title}`;
         fetch(OMdb_API).then(response => {
             response.json().then(moviesFromOMDB => {
-                // Object Properties for moviesFromOMDB: Title, Year, Genre, Director, Actors, Plot, Poster
-                //HOW THIS WORKS: users only need to enter the movie title and OMDB will populate the rest if left empty
-                //If a movie is a remake ex: Scarface 1932 vs Scarface 1983, user will need to enter the year
-
-                movieToAdd.poster = moviesFromOMDB.Poster //movie poster will auto-populate from OMDB, no user input needed
-
-                //If statements for fields left blank
 
                 if (movieToAdd.plot === ""){
                     movieToAdd.plot = moviesFromOMDB.Plot
@@ -35,9 +32,6 @@ $(document).ready(function () {
         })
     }
 
-//movies list in a variable
-    const url = 'https://rain-wealthy-teacher.glitch.me/movies'
-    const movieSelection = document.getElementById("movies");
 
 
     function AJAX(url, method = "GET", data) {
@@ -60,7 +54,6 @@ $(document).ready(function () {
             console.log(responseData)
             responseData.forEach(function (movie) {
                 $('#movies').append(
-                    // html +=
                     `<div class= "col card" style="width: 25rem;">
   <img src=${movie.poster} class="card-img-top" alt="...">
   <div class="card-body">
@@ -81,11 +74,7 @@ $(document).ready(function () {
 
     getAllMovies()
 
-// function getOneMovie(id) {
-//     AJAX(`${url}/${id}`).then(responseData => console.log(responseData));
-// }
-//
-// getOneMovie(2)
+
 
 
     function addEventListeners() {
@@ -105,14 +94,7 @@ $(document).ready(function () {
                 getAllMovies()
             })
         });
-        // $('.edit-button').click(function () {
-        //     const idToEdit = $(this).attr("data-id")
-        //     $('#myModal').modal('show')
-        //     $('#saveChanges').click(function (event) {
-        //         event.preventDefault()
-        //         updateMovies(idToEdit)
-        //         $('#myModal').modal('hide')
-        //         getAllMovies()
+
     }
 
     function updateMovies(id) {
