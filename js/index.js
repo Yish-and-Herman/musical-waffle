@@ -7,34 +7,6 @@ $(document).ready(function () {
 const url = 'https://rain-wealthy-teacher.glitch.me/movies'
 const movieSelection = document.getElementById("movies");
 
-// const getMoviesFromOMdb_API = (movieToAdd) => {
-//     const OMdb_API = `http://www.omdbapi.com/?i=tt3896198&apikey=91205e9a=${movieAPI}&t=${movieToAdd.title}`;
-//     fetch(OMdb_API).then(response => {
-//         response.json().then(moviesFromOMDB => {
-//
-//             if (movieToAdd.plot === "") {
-//                 movieToAdd.plot = moviesFromOMDB.Plot
-//             }
-//             if (movieToAdd.actors === "") {
-//                 movieToAdd.actors = moviesFromOMDB.Actors
-//             }
-//             if (movieToAdd.director === "") {
-//                 movieToAdd.director = moviesFromOMDB.Director
-//             }
-//             if (movieToAdd.genre === "") {
-//                 movieToAdd.genre = moviesFromOMDB.Genre
-//             }
-//             if (movieToAdd.year === "") {
-//                 movieToAdd.year = moviesFromOMDB.Year
-//             }
-//
-//             addMovie(movieToAdd);
-//
-//         });
-//     })
-// }
-
-
 function AJAX(url, method = "GET", data) {
     const options = {
         method: method,
