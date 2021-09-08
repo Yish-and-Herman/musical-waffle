@@ -7,6 +7,34 @@ $(document).ready(function () {
 const url = 'https://rain-wealthy-teacher.glitch.me/movies'
 const movieSelection = document.getElementById("movies");
 
+// const getMoviesFromOMdb_API = (movieToAdd) => {
+//     const OMdb_API = `http://www.omdbapi.com/?i=tt3896198&apikey=91205e9a=${movieAPI}&t=${movieToAdd.title}`;
+//     fetch(OMdb_API).then(response => {
+//         response.json().then(moviesFromOMDB => {
+//
+//             if (movieToAdd.plot === "") {
+//                 movieToAdd.plot = moviesFromOMDB.Plot
+//             }
+//             if (movieToAdd.actors === "") {
+//                 movieToAdd.actors = moviesFromOMDB.Actors
+//             }
+//             if (movieToAdd.director === "") {
+//                 movieToAdd.director = moviesFromOMDB.Director
+//             }
+//             if (movieToAdd.genre === "") {
+//                 movieToAdd.genre = moviesFromOMDB.Genre
+//             }
+//             if (movieToAdd.year === "") {
+//                 movieToAdd.year = moviesFromOMDB.Year
+//             }
+//
+//             addMovie(movieToAdd);
+//
+//         });
+//     })
+// }
+
+
 function AJAX(url, method = "GET", data) {
     const options = {
         method: method,
@@ -50,7 +78,7 @@ function getAllMovies() {
         responseData.forEach(function (movie) {
             $('#movies').append(
                 `<div class= "col card" style="width: 25rem;">
-  <img src= posterURL  class="card-img-top" alt="...">
+  <img src=${movie.poster} class="card-img-top" alt="...">
   <div class="card-body">
    <p class="card-text">Movie title: ${movie.title}</p>
     <p class="card-text">Movie rating: ${movie.rating}</p>
@@ -105,6 +133,7 @@ function addMovie() {
     const movieToAdd = {
         title: $('#movie-title').val(),
         rating: $('#rating').val(),
+        poster: $('#poster').val(),
     };
     console.log(movieToAdd)
 
