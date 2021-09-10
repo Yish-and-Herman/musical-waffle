@@ -122,7 +122,9 @@ function updateMovies(id) {
     AJAX(`${url}/${id}`, "PATCH", {
         plot: $('#edit-box').val(),
         title: $('#edit-title').val(),
-        rating: $('#edit-rating').val()
+        rating: $('#edit-rating').val(),
+        poster: $('#poster').val()
+
     }).then(responseData => console.log(responseData));
 
 }
